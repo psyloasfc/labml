@@ -2,149 +2,484 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ML Codes</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Software Engineering — Library Management System</title>
 <style>
+:root{--bg:#0b1020;--card:#111827;--card2:#172033;--text:#f8fafc;--muted:#aab4c5;--accent:#8b5cf6;--accent2:#6d28d9;--border:#263247}
 *{box-sizing:border-box}
-:root{
-  --bg:#151515;
-  --card:#1d1d1d;
-  --text:#f2f2f2;
-  --muted:#aaa;
-  --border:#eee;
-  --code:#101010;
-}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;transition:background .2s,color .2s}
-.sheet{max-width:900px;margin:28px auto;padding:24px;border:2px solid var(--border);border-radius:18px;background:var(--card)}
-header{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:20px}
-h1{margin:0;font-size:28px;font-weight:600}
-.sub{color:var(--muted);font-size:14px;margin-top:2px}
-.row{border:2px solid var(--border);border-radius:12px;margin:12px 0;overflow:hidden}
-.top{display:flex;align-items:center;gap:12px;padding:11px 14px}
-.name{flex:1;font-size:16px;overflow-wrap:anywhere}
-button{font:14px Arial,Helvetica,sans-serif;background:transparent;color:var(--text);border:2px solid var(--border);border-radius:9px;padding:4px 14px;cursor:pointer}
-button:hover{background:var(--code)}
-.body{display:none;border-top:2px dashed var(--border);padding:12px}
-.row.open .body{display:block}
-pre{margin:0;padding:14px;background:var(--code);color:var(--text);border-radius:8px;overflow:auto;font:14px/1.5 Consolas,Monaco,monospace;white-space:pre}
-.algorithm-title,.code-title{font-size:15px;font-weight:600;margin:4px 0 8px}.algorithm{background:var(--code);border:1px solid #444;border-radius:8px;padding:12px 14px;margin-bottom:16px;color:var(--text);font-size:14px;line-height:1.6;white-space:pre-wrap}.code-title{margin-top:4px}
-
-@media(max-width:600px){
- .sheet{margin:12px;padding:15px}
- .top{flex-wrap:wrap}
- .name{width:100%}
-}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#080d19,#111827 55%,#1b1230);color:var(--text);min-height:100vh}
+header{padding:38px 7vw 25px;text-align:center}
+h1{margin:0 0 8px;font-size:32px}
+header p{margin:0;color:var(--muted);font-size:15px}
+.container{width:min(1100px,92%);margin:auto;padding-bottom:50px}
+.card{background:rgba(17,24,39,.88);border:1px solid var(--border);border-radius:16px;margin:20px 0;overflow:hidden;box-shadow:0 12px 35px rgba(0,0,0,.22)}
+.card-head{padding:18px 20px;background:rgba(23,32,51,.9);display:flex;align-items:center;justify-content:space-between;gap:15px}
+.card-head h2{margin:0;font-size:19px}
+.badge{font-size:12px;color:#ddd6fe;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.35);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.code-wrap{padding:18px;position:relative}
+textarea{width:100%;height:360px;resize:vertical;background:#080d17;color:#dbeafe;border:1px solid #29364d;border-radius:10px;padding:16px;font:13px/1.55 Consolas,Monaco,monospace;outline:none}
+textarea:focus{border-color:var(--accent)}
+.actions{display:flex;gap:10px;margin-top:12px}
+button{border:0;border-radius:9px;padding:10px 15px;font-weight:700;cursor:pointer;background:var(--accent);color:white}
+button:hover{background:var(--accent2)}
+button.secondary{background:#263247}
+button.secondary:hover{background:#334155}
+.tip{margin:0 0 20px;padding:14px 17px;border-left:4px solid var(--accent);background:rgba(139,92,246,.08);border-radius:8px;color:#d8dee9;line-height:1.5}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:20px}
 </style>
 </head>
 <body>
-<main class="sheet">
 <header>
-  <div>
-    <h1>ML Codes</h1>
-    <div class="sub">Machine Learning experiments &amp; practical code</div>
-  </div>
+  <h1>Software Engineering — Library Management System</h1>
+  <p>Library Management System (LMS) • Experiments 3, 5, 6 & 7</p>
 </header>
-<div id="list"></div>
+<main class="container">
+  <div class="tip">
+    <strong>How to use:</strong> Copy the code for the required experiment, open
+    <strong>draw.io / diagrams.net</strong>, choose <strong>Arrange → Insert → Mermaid</strong>,
+    paste the code, and insert the diagram.
+  </div>
+  
+    <section class="card">
+      <div class="card-head">
+        <h2>Experiment 3 — DFD Level 0</h2>
+        <span class="badge">Copy Mermaid Code</span>
+      </div>
+      <div class="code-wrap">
+        <textarea id="code1" spellcheck="false">flowchart LR
+    Member[Member]
+    Librarian[Librarian]
+    Admin[Administrator]
+
+    System((Library Management System))
+
+    Member --&gt;|Login, Search Request, Borrow / Return Request| System
+    System --&gt;|Book Details, Availability, Due Dates &amp; Notifications| Member
+
+    Librarian --&gt;|Book Issue / Return, Catalog Updates| System
+    System --&gt;|Member Details, Transaction Reports| Librarian
+
+    Admin --&gt;|User / Library Management| System
+    System --&gt;|Reports, System Status| Admin</textarea>
+        <div class="actions">
+          <button onclick="copyCode('code1',this)">Copy Code</button>
+          <button class="secondary" onclick="selectCode('code1')">Select All</button>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card">
+      <div class="card-head">
+        <h2>Experiment 3 — DFD Level 1</h2>
+        <span class="badge">Copy Mermaid Code</span>
+      </div>
+      <div class="code-wrap">
+        <textarea id="code2" spellcheck="false">flowchart LR
+    Member[Member]
+    Librarian[Librarian]
+    Admin[Administrator]
+
+    P1((1.0&lt;br/&gt;Authentication))
+    P2((2.0&lt;br/&gt;Book Catalog Management))
+    P3((3.0&lt;br/&gt;Search &amp; Availability))
+    P4((4.0&lt;br/&gt;Issue &amp; Return Management))
+    P5((5.0&lt;br/&gt;Fine &amp; Notification Management))
+    P6((6.0&lt;br/&gt;Reporting))
+    P7((7.0&lt;br/&gt;User Management))
+
+    D1[(D1 User Database)]
+    D2[(D2 Book Catalog)]
+    D3[(D3 Issue / Return Records)]
+    D4[(D4 Fine Database)]
+    D5[(D5 Audit Log)]
+
+    Member --&gt;|Login Credentials| P1
+    P1 --&gt;|Authentication Result| Member
+    P1 &lt;--&gt; D1
+
+    Librarian --&gt;|Book Details / Catalog Updates| P2
+    P2 &lt;--&gt; D2
+
+    Member --&gt;|Book Search Request| P3
+    P3 &lt;--&gt; D2
+    P3 --&gt;|Book Details &amp; Availability| Member
+
+    Member --&gt;|Borrow / Return Request| P4
+    Librarian --&gt;|Issue / Return Transaction| P4
+    P4 &lt;--&gt; D3
+    P4 --&gt;|Transaction Confirmation| Member
+    P4 --&gt;|Transaction Details| Librarian
+    P4 --&gt; D5
+
+    P4 --&gt;|Overdue / Fine Event| P5
+    P5 &lt;--&gt; D4
+    P5 --&gt;|Fine / Due Date Notification| Member
+
+    Librarian --&gt;|Report Request| P6
+    Admin --&gt;|Report Request| P6
+    P6 --&gt;|Reports| Librarian
+    P6 --&gt;|Reports| Admin
+    P6 --&gt; D2
+    P6 --&gt; D3
+    P6 --&gt; D4
+
+    Admin --&gt;|User Data| P7
+    P7 &lt;--&gt; D1
+    P7 --&gt; D5</textarea>
+        <div class="actions">
+          <button onclick="copyCode('code2',this)">Copy Code</button>
+          <button class="secondary" onclick="selectCode('code2')">Select All</button>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card">
+      <div class="card-head">
+        <h2>Experiment 5 — UML Use Case Diagram</h2>
+        <span class="badge">Copy Mermaid Code</span>
+      </div>
+      <div class="code-wrap">
+        <textarea id="code3" spellcheck="false">flowchart LR
+    Member[Member]
+    Librarian[Librarian]
+    Admin[Administrator]
+
+    subgraph LMS["Library Management System"]
+        UC1([Login / Authenticate])
+        UC2([Search Books])
+        UC3([View Book Details])
+        UC4([Borrow Book])
+        UC5([Return Book])
+        UC6([Renew Book])
+        UC7([View Borrowing History])
+        UC8([Add / Edit Book])
+        UC9([Issue / Return Book])
+        UC10([Manage Fines])
+        UC11([Manage Members])
+        UC12([Generate Reports])
+        UC13([Manage Users])
+    end
+
+    Member --- UC1
+    Member --- UC2
+    Member --- UC3
+    Member --- UC4
+    Member --- UC5
+    Member --- UC6
+    Member --- UC7
+
+    Librarian --- UC1
+    Librarian --- UC2
+    Librarian --- UC8
+    Librarian --- UC9
+    Librarian --- UC10
+    Librarian --- UC12
+
+    Admin --- UC1
+    Admin --- UC11
+    Admin --- UC12
+    Admin --- UC13
+
+    UC4 -. "include" .-&gt; UC3
+    UC6 -. "extend" .-&gt; UC4
+    UC10 -. "include" .-&gt; UC5</textarea>
+        <div class="actions">
+          <button onclick="copyCode('code3',this)">Copy Code</button>
+          <button class="secondary" onclick="selectCode('code3')">Select All</button>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card">
+      <div class="card-head">
+        <h2>Experiment 5 — UML Class Diagram</h2>
+        <span class="badge">Copy Mermaid Code</span>
+      </div>
+      <div class="code-wrap">
+        <textarea id="code4" spellcheck="false">classDiagram
+class User {
+    +userId
+    +name
+    +email
+    +passwordHash
+    +role
+    +login()
+    +logout()
+}
+
+class Member {
+    +membershipId
+    +searchBook()
+    +borrowBook()
+    +returnBook()
+    +renewBook()
+    +viewHistory()
+}
+
+class Librarian {
+    +addBook()
+    +editBook()
+    +issueBook()
+    +receiveBook()
+    +manageFine()
+}
+
+class Administrator {
+    +manageUsers()
+    +manageMembers()
+    +generateReports()
+}
+
+class Book {
+    +bookId
+    +title
+    +author
+    +isbn
+    +category
+    +status
+    +addBook()
+    +updateBook()
+    +checkAvailability()
+}
+
+class Library {
+    +libraryId
+    +name
+    +location
+    +searchCatalog()
+}
+
+class BorrowTransaction {
+    +transactionId
+    +issueDate
+    +dueDate
+    +returnDate
+    +status
+    +issueBook()
+    +returnBook()
+}
+
+class Fine {
+    +fineId
+    +amount
+    +status
+    +calculateFine()
+    +payFine()
+}
+
+class Notification {
+    +notificationId
+    +message
+    +timestamp
+    +send()
+}
+
+class AuditLog {
+    +logId
+    +action
+    +timestamp
+    +recordAction()
+}
+
+User &lt;|-- Member
+User &lt;|-- Librarian
+User &lt;|-- Administrator
+
+Library "1" --&gt; "*" Book : contains
+Member "1" --&gt; "*" BorrowTransaction : makes
+Book "1" --&gt; "*" BorrowTransaction : involved in
+BorrowTransaction "1" --&gt; "0..1" Fine : generates
+Member "1" --&gt; "*" Fine : receives
+Librarian "1" --&gt; "*" BorrowTransaction : manages
+Librarian "1" --&gt; "*" Book : manages
+BorrowTransaction --&gt; Notification : triggers
+User --&gt; AuditLog : generates</textarea>
+        <div class="actions">
+          <button onclick="copyCode('code4',this)">Copy Code</button>
+          <button class="secondary" onclick="selectCode('code4')">Select All</button>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card">
+      <div class="card-head">
+        <h2>Experiment 6 — Activity Diagram</h2>
+        <span class="badge">Copy Mermaid Code</span>
+      </div>
+      <div class="code-wrap">
+        <textarea id="code5" spellcheck="false">flowchart TD
+    Start((Start))
+
+    A[Member logs in]
+    B[Search for book]
+    C[View book details and availability]
+    D{Book Available?}
+
+    E[Request / Borrow Book]
+    F[Librarian verifies membership]
+    G[Issue Book and record due date]
+
+    H[Book unavailable]
+    I[Join / update waiting list]
+
+    J[Member returns book]
+    K{Returned after due date?}
+    L[Calculate Fine]
+    M[Record Return]
+    N[Send Due Date / Fine Notification]
+
+    End((End))
+
+    Start --&gt; A
+    A --&gt; B
+    B --&gt; C
+    C --&gt; D
+
+    D --&gt;|Yes| E
+    E --&gt; F
+    F --&gt; G
+    G --&gt; N
+
+    D --&gt;|No| H
+    H --&gt; I
+    I --&gt; End
+
+    G --&gt; J
+    J --&gt; K
+    K --&gt;|Yes| L
+    K --&gt;|No| M
+    L --&gt; M
+    M --&gt; N
+    N --&gt; End</textarea>
+        <div class="actions">
+          <button onclick="copyCode('code5',this)">Copy Code</button>
+          <button class="secondary" onclick="selectCode('code5')">Select All</button>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card">
+      <div class="card-head">
+        <h2>Experiment 7 — Sequence Diagram</h2>
+        <span class="badge">Copy Mermaid Code</span>
+      </div>
+      <div class="code-wrap">
+        <textarea id="code6" spellcheck="false">sequenceDiagram
+    actor Member
+    participant UI as LibraryUI
+    participant Catalog as BookCatalog
+    participant Transaction as BorrowTransaction
+    participant NotificationService
+
+    Member-&gt;&gt;UI: searchBook(title/author)
+    UI-&gt;&gt;Catalog: findBook(query)
+    Catalog--&gt;&gt;UI: bookDetails + availability
+    UI--&gt;&gt;Member: displayBookDetails()
+
+    Member-&gt;&gt;UI: borrowBook(bookId)
+    UI-&gt;&gt;Catalog: checkAvailability(bookId)
+
+    alt Book available
+        UI-&gt;&gt;Transaction: createTransaction(memberId, bookId)
+        Transaction-&gt;&gt;Transaction: issueBook()
+        Transaction--&gt;&gt;UI: transactionId + dueDate
+
+        Transaction-&gt;&gt;NotificationService: sendDueDateNotification()
+        NotificationService--&gt;&gt;Member: dueDateConfirmation()
+        UI--&gt;&gt;Member: displayBorrowConfirmation()
+    else Book unavailable
+        UI--&gt;&gt;Member: Show unavailable / waiting-list option
+    end</textarea>
+        <div class="actions">
+          <button onclick="copyCode('code6',this)">Copy Code</button>
+          <button class="secondary" onclick="selectCode('code6')">Select All</button>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card">
+      <div class="card-head">
+        <h2>Experiment 7 — Collaboration Diagram</h2>
+        <span class="badge">Copy Mermaid Code</span>
+      </div>
+      <div class="code-wrap">
+        <textarea id="code7" spellcheck="false">flowchart LR
+    Member["Member"]
+    UI["LibraryUI"]
+    Catalog["BookCatalog"]
+    Transaction["BorrowTransaction"]
+    Notification["NotificationService"]
+
+    Member --&gt;|"1: searchBook(title/author)"| UI
+    UI --&gt;|"2: findBook(query)"| Catalog
+    Catalog --&gt;|"3: bookDetails + availability [return]"| UI
+
+    Member --&gt;|"4: borrowBook(bookId)"| UI
+    UI --&gt;|"5: checkAvailability(bookId)"| Catalog
+    UI --&gt;|"6: createTransaction(memberId, bookId)"| Transaction
+    Transaction --&gt;|"7: transactionId + dueDate [return]"| UI
+    Transaction --&gt;|"8: sendDueDateNotification()"| Notification
+    Notification --&gt;|"9: Due date confirmation"| Member</textarea>
+        <div class="actions">
+          <button onclick="copyCode('code7',this)">Copy Code</button>
+          <button class="secondary" onclick="selectCode('code7')">Select All</button>
+        </div>
+      </div>
+    </section>
+    
 </main>
-
+<footer>SE Lab • Library Management System • Ready-to-copy diagram codes</footer>
 <script>
-/*
-  ==========================================================
-  PUBLISHED EXPERIMENTS
-  ==========================================================
-  These experiments are stored directly in this index.html.
+async function copyCode(id, btn) {
+  const el = document.getElementById(id);
+  const text = el.value;
+  const original = btn.textContent;
 
-  To add/change an experiment:
-  1. Edit this file.
-  2. Save it.
-  3. git add index.html
-  4. git commit -m "Add experiment"
-  5. git push
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      temp.style.position = 'fixed';
+      temp.style.left = '-9999px';
+      document.body.appendChild(temp);
+      temp.focus();
+      temp.select();
+      temp.setSelectionRange(0, temp.value.length);
 
-  Vercel automatically publishes the change.
-  Everyone continues using the same URL:
-  https://menma-labs.vercel.app/
-  ==========================================================
-*/
-const experiments = [{"name": "exp 1 - Iris Dataset Visualization - Iris.csv", "algorithmSteps": "1. Load and clean the Iris dataset.\n2. Display dataset information and statistics.\n3. Analyze species distribution.\n4. Plot feature distributions.\n5. Create scatter plots and pair plots.\n6. Generate a correlation heatmap.\n7. Compare petal length across species.", "algorithm": "df = pd.read_csv(\"iris.csv\")\ndf = df.dropna().drop_duplicates()\n\n# Visualizations\nsns.histplot(data=df, x=\"sepal_length\")\nsns.scatterplot(data=df, x=\"sepal_length\", y=\"sepal_width\")\nsns.pairplot(df, hue=\"species\")\nsns.heatmap(df.select_dtypes(\"number\").corr(), annot=True)", "code": "#!pip install pandas numpy matplotlib seaborn scikit-learn xgboost\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# Load and clean data\ndf = pd.read_csv(\"iris.csv\")\ndf = df.drop(columns=[\"Id\"], errors=\"ignore\").dropna().drop_duplicates()\n\n# Print essential dataset summaries\nprint(\"Dataset Information:\")\ndf.info()\nprint(\"\\nStatistical Summary:\\n\", df.describe())\nprint(\"\\nClass Distribution:\\n\", df[\"species\"].value_counts())\n\n# 1. Species Count\nsns.countplot(x=\"species\", data=df)\nplt.title(\"Number of Flowers of Each Species\")\nplt.show()\n\n# 2. Feature Distributions\ndf.hist(figsize=(10, 8))\nplt.tight_layout()\nplt.show()\n\n# 3. Sepal Dimensions\nsns.scatterplot(x=\"sepal_length\", y=\"sepal_width\", hue=\"species\", data=df)\nplt.title(\"Sepal Length vs Sepal Width\")\nplt.show()\n\n# 4. Petal Dimensions\nsns.scatterplot(x=\"petal_length\", y=\"petal_width\", hue=\"species\", data=df)\nplt.title(\"Petal Length vs Petal Width\")\nplt.show()\n\n# 5. Pairwise Relationships\nsns.pairplot(df, hue=\"species\")\nplt.show()\n\n# 6. Correlation Heatmap\nnumeric_df = df.select_dtypes(include=\"number\")\nsns.heatmap(numeric_df.corr(), annot=True, cmap=\"coolwarm\", fmt=\".2f\")\nplt.title(\"Correlation Heatmap\")\nplt.show()\n\n# 7. Petal Length Distribution by Species\nsns.boxplot(x=\"species\", y=\"petal_length\", data=df)\nplt.title(\"Petal Length by Species\")\nplt.show()"}, {"name": "exp 2 - Simple linear, multiple and polynomial regression - Advertising.csv", "algorithmSteps": "1. Load the Advertising dataset.\n2. Select TV and Sales for simple regression.\n3. Split data into training and testing sets.\n4. Train Linear Regression and evaluate using MSE and R\u00b2.\n5. Use TV, Radio and Newspaper for multiple regression.\n6. Apply PolynomialFeatures of degree 2 for polynomial regression.\n7. Predict sales and visualize the regression models.", "algorithm": "# Simple Linear Regression\nX = df[[\"TV\"]]\ny = df[\"Sales\"]\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\ny_pred = model.predict(X_test)\n\n# Multiple Regression\nX = df[[\"TV\", \"Radio\", \"Newspaper\"]]\nmodel.fit(X_train, y_train)\n\n# Polynomial Regression\npoly = PolynomialFeatures(degree=2)\nX_poly = poly.fit_transform(df[[\"TV\"]])\nmodel.fit(X_train, y_train)", "code": "#!pip install pandas numpy matplotlib seaborn scikit-learn xgboost\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.preprocessing import PolynomialFeatures\nfrom sklearn.metrics import mean_squared_error, r2_score\n\n# ================= DATA OVERVIEW =================\n\ndf = pd.read_csv(\"Advertising.csv\")\ndf = df.loc[:, ~df.columns.str.contains(\"^Unnamed\")].dropna().drop_duplicates()\n\nprint(\"Dataset Overview:\")\nprint(df.head())\nprint(\"\\nDataset Shape:\", df.shape)\nprint(\"\\nStatistical Summary:\\n\", df.describe())\n\n\n# ========== SIMPLE LINEAR REGRESSION ==========\nprint(\"\\n\" + \"=\"*40)\nprint(\"       SIMPLE LINEAR REGRESSION\")\nprint(\"=\"*40)\n\nX_sim = df[[\"TV\"]]\ny_sim = df[\"Sales\"]\nX_train_s, X_test_s, y_train_s, y_test_s = train_test_split(X_sim, y_sim, test_size=0.2, random_state=42)\n\nsimple_model = LinearRegression()\nsimple_model.fit(X_train_s, y_train_s)\ny_pred_s = simple_model.predict(X_test_s)\n\nprint(\"Mean Squared Error:\", mean_squared_error(y_test_s, y_pred_s))\nprint(\"R2 Score:\", r2_score(y_test_s, y_pred_s))\n\n# Ask for input with suggestions based on dataset ranges (TV typically ranges from 0 to 300)\ntv_val_s = float(input(\"\\nEnter TV advertising amount (Suggested: 150.0): \"))\npred_sales_s = simple_model.predict(pd.DataFrame({\"TV\": [tv_val_s]}))[0]\nprint(f\"--> Predicted Sales: {pred_sales_s:.2f}\")\n\n# Visualization showing the regression line and the user's predicted point\nplt.scatter(X_test_s[\"TV\"], y_test_s, color=\"blue\", alpha=0.5, label=\"Test Data\")\nplt.plot(X_test_s[\"TV\"], y_pred_s, color=\"red\", label=\"Regression Line\")\nplt.scatter([tv_val_s], [pred_sales_s], color=\"green\", s=150, zorder=5, label=\"Your Prediction\") # Highlights user input\nplt.xlabel(\"TV Advertising\")\nplt.ylabel(\"Sales\")\nplt.title(\"Simple Linear Regression\")\nplt.legend()\nplt.show()\n\n\n# ========== MULTIVARIATE LINEAR REGRESSION ==========\nprint(\"\\n\" + \"=\"*40)\nprint(\"     MULTIVARIATE LINEAR REGRESSION\")\nprint(\"=\"*40)\n\nX_multi = df[[\"TV\", \"Radio\", \"Newspaper\"]]\ny_multi = df[\"Sales\"]\nX_train_m, X_test_m, y_train_m, y_test_m = train_test_split(X_multi, y_multi, test_size=0.2, random_state=42)\n\nmulti_model = LinearRegression()\nmulti_model.fit(X_train_m, y_train_m)\ny_pred_m = multi_model.predict(X_test_m)\n\nprint(\"Mean Squared Error:\", mean_squared_error(y_test_m, y_pred_m))\nprint(\"R2 Score:\", r2_score(y_test_m, y_pred_m))\n\n# Ask for inputs with suggestions based on dataset ranges\ntv_m = float(input(\"\\nEnter TV amount (Suggested: 200.0): \"))\nradio_m = float(input(\"Enter Radio amount (Suggested: 35.0): \"))\nnews_m = float(input(\"Enter Newspaper amount (Suggested: 45.0): \"))\n\ninput_data = pd.DataFrame({\"TV\": [tv_m], \"Radio\": [radio_m], \"Newspaper\": [news_m]})\npred_sales_m = multi_model.predict(input_data)[0]\nprint(f\"--> Predicted Sales: {pred_sales_m:.2f}\")\n\n# Visualization of Actual vs Predicted (since it's 3D data, we plot prediction accuracy)\nplt.scatter(y_test_m, y_pred_m, color=\"purple\", alpha=0.6)\nplt.plot([y_test_m.min(), y_test_m.max()], [y_test_m.min(), y_test_m.max()], color=\"red\", linestyle=\"--\")\nplt.xlabel(\"Actual Sales\")\nplt.ylabel(\"Predicted Sales\")\nplt.title(\"Multivariate: Actual vs Predicted\")\nplt.show()\n\n\n# ========== POLYNOMIAL REGRESSION ==========\nprint(\"\\n\" + \"=\"*40)\nprint(\"         POLYNOMIAL REGRESSION\")\nprint(\"=\"*40)\n\npoly = PolynomialFeatures(degree=2)\nX_train_p = poly.fit_transform(X_train_s)\nX_test_p = poly.transform(X_test_s)\n\npoly_model = LinearRegression()\npoly_model.fit(X_train_p, y_train_s)\ny_pred_p = poly_model.predict(X_test_p)\n\nprint(\"Mean Squared Error:\", mean_squared_error(y_test_s, y_pred_p))\nprint(\"R2 Score:\", r2_score(y_test_s, y_pred_p))\n\n# Ask for input (high values like 250 show the curve effect nicely)\ntv_val_p = float(input(\"\\nEnter TV advertising amount (Suggested: 280.0 to see the curve): \"))\ninput_poly = poly.transform(pd.DataFrame({\"TV\": [tv_val_p]}))\npred_sales_p = poly_model.predict(input_poly)[0]\nprint(f\"--> Predicted Sales: {pred_sales_p:.2f}\")\n\n# Visualization showing the polynomial curve and the user's predicted point\nX_sorted = np.sort(X_test_s[\"TV\"].values)\nX_sorted_poly = poly.transform(pd.DataFrame({\"TV\": X_sorted}))\ny_curve = poly_model.predict(X_sorted_poly)\n\nplt.scatter(X_test_s[\"TV\"], y_test_s, color=\"blue\", alpha=0.5, label=\"Test Data\")\nplt.plot(X_sorted, y_curve, color=\"red\", label=\"Polynomial Curve\")\nplt.scatter([tv_val_p], [pred_sales_p], color=\"green\", s=150, zorder=5, label=\"Your Prediction\") # Highlights user input\nplt.xlabel(\"TV Advertising\")\nplt.ylabel(\"Sales\")\nplt.title(\"Polynomial Regression (Degree 2)\")\nplt.legend()\nplt.show()"}, {"name": "exp 3 - Logistic Regression - Social_Network_Ads.csv", "algorithmSteps": "1. Load the Social Network Ads dataset.\n2. Select Age and EstimatedSalary as features.\n3. Split the data into training and testing sets.\n4. Standardize the features using StandardScaler.\n5. Train Logistic Regression.\n6. Evaluate using accuracy, classification report and confusion matrix.\n7. Take new user input and predict purchase probability.\n8. Visualize the decision boundary.", "algorithm": "X = df[[\"Age\", \"EstimatedSalary\"]]\ny = df[\"Purchased\"]\n\nscaler = StandardScaler()\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\nmodel = LogisticRegression()\nmodel.fit(X_train, y_train)\ny_pred = model.predict(X_test)", "code": "#!pip install pandas numpy matplotlib seaborn scikit-learn xgboost\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import accuracy_score, confusion_matrix, classification_report\n\n# ==========================================\n# 1. DATA PREPARATION & OVERVIEW\n# ==========================================\ndf = pd.read_csv(\"Social_Network_Ads.csv\").dropna().drop_duplicates()\n\nprint(\"=\"*40)\nprint(\"           DATASET OVERVIEW\")\nprint(\"=\"*40)\nprint(f\"Total Records: {df.shape[0]}\")\nprint(\"\\nPurchased Summary (0 = No, 1 = Yes):\")\nprint(df[\"Purchased\"].value_counts())\n\n# Plot basic class distribution\nsns.countplot(x=\"Purchased\", data=df, palette=\"Set2\")\nplt.title(\"Distribution of Purchases\")\nplt.xticks([0, 1], [\"Not Purchased (0)\", \"Purchased (1)\"])\nplt.show()\n\n# ==========================================\n# 2. MODEL TRAINING & EVALUATION\n# ==========================================\nX = df[[\"Age\", \"EstimatedSalary\"]]\ny = df[\"Purchased\"]\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Scale the data (Logistic Regression needs features on the same scale)\nscaler = StandardScaler()\nX_train_scaled = scaler.fit_transform(X_train)\nX_test_scaled = scaler.transform(X_test)\n\nmodel = LogisticRegression()\nmodel.fit(X_train_scaled, y_train)\ny_pred = model.predict(X_test_scaled)\n\nprint(\"\\n\" + \"=\"*40)\nprint(\"         MODEL EVALUATION\")\nprint(\"=\"*40)\nprint(f\"Overall Accuracy: {accuracy_score(y_test, y_pred) * 100:.1f}%\\n\")\n\n# Show a clean comparison of a few test points instead of raw arrays\nresults_comparison = pd.DataFrame({\n    \"Actual\": y_test.values,\n    \"Predicted\": y_pred\n}).head()\nprint(\"Sample Predictions (First 5 Test Cases):\")\nprint(results_comparison.to_string(index=False))\n\nprint(\"\\nClassification Report:\")\nprint(classification_report(y_test, y_pred))\n\n# Plot Confusion Matrix cleanly\ncm = confusion_matrix(y_test, y_pred)\nsns.heatmap(cm, annot=True, fmt=\"d\", cmap=\"Blues\", \n            xticklabels=[\"Not Purchased\", \"Purchased\"], \n            yticklabels=[\"Not Purchased\", \"Purchased\"])\nplt.xlabel(\"Predicted By Model\")\nplt.ylabel(\"Actual Value\")\nplt.title(\"Confusion Matrix\")\nplt.show()\n\n# ==========================================\n# 3. INTERACTIVE PREDICTION\n# ==========================================\nprint(\"\\n\" + \"=\"*40)\nprint(\"           PREDICT NEW USER\")\nprint(\"=\"*40)\n\n# Get user input with helpful suggestions\nage = int(input(\"Enter Age (Suggested: 45): \"))\nsalary = float(input(\"Enter Estimated Salary (Suggested: 90000): \"))\n\ninput_data = pd.DataFrame({\"Age\": [age], \"EstimatedSalary\": [salary]})\ninput_scaled = scaler.transform(input_data)\n\nprediction = model.predict(input_scaled)[0]\nprobability = model.predict_proba(input_scaled)[0]\n\nprint(\"\\n--- RESULTS ---\")\nif prediction == 1:\n    print(\"Decision: Likely to PURCHASE (1)\")\nelse:\n    print(\"Decision: Likely to NOT PURCHASE (0)\")\n\nprint(f\"Confidence (Will not purchase): {probability[0] * 100:.1f}%\")\nprint(f\"Confidence (Will purchase):     {probability[1] * 100:.1f}%\")\n\n\n# ==========================================\n# 4. DECISION BOUNDARY VISUALIZATION\n# ==========================================\n# We calculate the grid on the ORIGINAL scale so the graph makes sense to read\nage_range = np.arange(X[\"Age\"].min() - 2, X[\"Age\"].max() + 2, 0.5)\nsalary_range = np.arange(X[\"EstimatedSalary\"].min() - 5000, X[\"EstimatedSalary\"].max() + 5000, 1000)\nX1, X2 = np.meshgrid(age_range, salary_range)\n\n# Flatten grid to scale it and predict\ngrid_df = pd.DataFrame({'Age': X1.ravel(), 'EstimatedSalary': X2.ravel()})\ngrid_scaled = scaler.transform(grid_df)\nZ = model.predict(grid_scaled).reshape(X1.shape)\n\n# Plotting the boundary and original points\nplt.figure(figsize=(10, 6))\nplt.contourf(X1, X2, Z, alpha=0.3, cmap=\"coolwarm\")\n\nplt.scatter(X[y == 0][\"Age\"], X[y == 0][\"EstimatedSalary\"], color=\"blue\", label=\"Not Purchased (Historical)\", alpha=0.6)\nplt.scatter(X[y == 1][\"Age\"], X[y == 1][\"EstimatedSalary\"], color=\"red\", label=\"Purchased (Historical)\", alpha=0.6)\n\n# Plot the user's specific input point\nplt.scatter([age], [salary], color=\"lime\", s=200, edgecolors=\"black\", label=\"Your New Prediction\", zorder=5)\n\nplt.xlabel(\"Age\")\nplt.ylabel(\"Estimated Salary ($)\")\nplt.title(\"Logistic Regression Decision Boundary\")\nplt.legend()\nplt.show()"}, {"name": "exp 4 - Naive Bayes Classifier - Iris.csv", "algorithmSteps": "1. Load and clean the Iris dataset.\n2. Select the four flower measurements as features.\n3. Set species as the target.\n4. Split data into training and testing sets.\n5. Train a Gaussian Naive Bayes classifier.\n6. Evaluate using accuracy, classification report and confusion matrix.\n7. Predict a new flower and display class probabilities.\n8. Visualize the custom prediction.", "algorithm": "X = df[[\"sepal_length\", \"sepal_width\",\n          \"petal_length\", \"petal_width\"]]\ny = df[\"species\"]\n\nmodel = GaussianNB()\nmodel.fit(X_train, y_train)\ny_pred = model.predict(X_test)", "code": "#!pip install pandas numpy matplotlib seaborn scikit-learn xgboost\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.naive_bayes import GaussianNB\nfrom sklearn.metrics import accuracy_score, confusion_matrix, classification_report\n\n# ================= 1. DATA OVERVIEW =================\n# Load data and ensure 'Species' is lowercase 'species' just in case\ndf = pd.read_csv(\"iris.csv\")\nif \"Species\" in df.columns:\n    df = df.rename(columns={\"Species\": \"species\"})\n\ndf = df.drop(columns=[\"Id\"], errors=\"ignore\").dropna().drop_duplicates()\n\nprint(\"========== DATASET OVERVIEW ==========\")\nprint(df.head())\nprint(f\"\\nDataset Shape: {df.shape}\")\nprint(\"\\nSpecies Count:\\n\", df[\"species\"].value_counts().to_string())\n\n# ================= 2. MODEL PREPARATION & TRAINING =================\n# Defining features (X) and target (y) using the correct lowercase columns\nX = df[[\"sepal_length\", \"sepal_width\", \"petal_length\", \"petal_width\"]]\ny = df[\"species\"]\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Naive Bayes doesn't require feature scaling, so we can fit it directly\nmodel = GaussianNB()\nmodel.fit(X_train, y_train)\ny_pred = model.predict(X_test)\n\n# ================= 3. UNDERSTANDABLE EVALUATION =================\nprint(\"\\n========== MODEL EVALUATION ==========\")\nprint(f\"Overall Accuracy: {accuracy_score(y_test, y_pred) * 100:.2f}%\")\n\nprint(\"\\nClassification Report:\")\nprint(classification_report(y_test, y_pred))\n\n# Confusion Matrix Heatmap\ncm = confusion_matrix(y_test, y_pred)\nsns.heatmap(cm, annot=True, fmt=\"d\", cmap=\"Greens\",\n            xticklabels=model.classes_, yticklabels=model.classes_)\nplt.xlabel(\"Predicted Species\")\nplt.ylabel(\"Actual Species\")\nplt.title(\"Naive Bayes Confusion Matrix\")\nplt.show()\n\n# ================= 4. CUSTOM PREDICTION =================\nprint(\"\\n========== MAKE A PREDICTION ==========\")\n# Adding suggested typical values for an Iris-Setosa so you know what to test\nsepal_length = float(input(\"Enter Sepal Length (Suggested: 5.1): \"))\nsepal_width = float(input(\"Enter Sepal Width  (Suggested: 3.5): \"))\npetal_length = float(input(\"Enter Petal Length (Suggested: 1.4): \"))\npetal_width = float(input(\"Enter Petal Width  (Suggested: 0.2): \"))\n\ninput_data = pd.DataFrame({\n    \"sepal_length\": [sepal_length],\n    \"sepal_width\": [sepal_width],\n    \"petal_length\": [petal_length],\n    \"petal_width\": [petal_width]\n})\n\nprediction = model.predict(input_data)[0]\nprobabilities = model.predict_proba(input_data)[0]\n\nprint(\"\\n--- RESULT ---\")\nprint(f\">> Model Prediction: The flower is {prediction.upper()}\")\n\n# Display raw probabilities as clean percentages\nprint(\"\\nCertainty Breakdown:\")\nfor species_name, prob in zip(model.classes_, probabilities):\n    print(f\" - {species_name}: {prob * 100:.2f}%\")\n\n# ================= 5. VISUALIZE YOUR CUSTOM INPUT =================\n# Plot the actual dataset using correct columns\nsns.scatterplot(data=df, x=\"petal_length\", y=\"petal_width\", hue=\"species\", palette=\"Set1\")\n\n# Plot your custom inputted Petal Length and Width as a massive star!\nplt.scatter(\n    petal_length, petal_width,\n    color=\"black\", s=300, marker=\"*\", edgecolor=\"yellow\",\n    label=\"Your Input\"\n)\n\nplt.title(\"Iris Species Classification (With Your Input Marked)\")\nplt.xlabel(\"Petal Length (cm)\")\nplt.ylabel(\"Petal Width (cm)\")\nplt.legend()\nplt.show()"}, {"name": "exp 5 - Decision Tree and Random Forest Model - Iris.csv", "algorithmSteps": "1. Load and clean the Iris dataset.\n2. Select the four measurements as features.\n3. Split the data into training and testing sets.\n4. Train a Decision Tree using the Entropy criterion.\n5. Evaluate and visualize the Decision Tree.\n6. Train a Random Forest classifier.\n7. Compare accuracy, confusion matrices and feature importance.\n8. Predict a new flower using both models.", "algorithm": "# Decision Tree\ndt = DecisionTreeClassifier(criterion=\"entropy\")\ndt.fit(X_train, y_train)\ny_pred_dt = dt.predict(X_test)\n\n# Random Forest\nrf = RandomForestClassifier(n_estimators=100)\nrf.fit(X_train, y_train)\ny_pred_rf = rf.predict(X_test)", "code": "#!pip install pandas numpy matplotlib seaborn scikit-learn xgboost\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.tree import DecisionTreeClassifier, plot_tree\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import accuracy_score, confusion_matrix, classification_report\n\n# ================= 1. DATA OVERVIEW =================\ndf = pd.read_csv(\"iris.csv\")\n\n# Clean dataset and ensure target column is explicitly named 'species'\nif \"Species\" in df.columns:\n    df = df.rename(columns={\"Species\": \"species\"})\ndf = df.drop(columns=[\"Id\", \"id\"], errors=\"ignore\").dropna().drop_duplicates()\n\nprint(\"========== DATASET OVERVIEW ==========\")\nprint(df.head())\nprint(f\"\\nDataset Shape: {df.shape}\")\nprint(\"\\nSpecies Count:\\n\", df[\"species\"].value_counts().to_string())\n\n# Define features using the lowercase underscore format\nX = df[[\"sepal_length\", \"sepal_width\", \"petal_length\", \"petal_width\"]]\ny = df[\"species\"]\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n\n# ================= 2. DECISION TREE =================\nprint(\"\\n\" + \"=\"*50)\nprint(\"             DECISION TREE MODEL\")\nprint(\"=\"*50)\n\ndt_model = DecisionTreeClassifier(criterion=\"entropy\", random_state=42)\ndt_model.fit(X_train, y_train)\ndt_pred = dt_model.predict(X_test)\n\nprint(f\"Accuracy: {accuracy_score(y_test, dt_pred) * 100:.2f}%\\n\")\nprint(\"Classification Report:\")\nprint(classification_report(y_test, dt_pred))\n\n# Plot 1: DT Confusion Matrix\nplt.figure(figsize=(6,4))\nsns.heatmap(confusion_matrix(y_test, dt_pred), annot=True, fmt=\"d\", cmap=\"Blues\",\n            xticklabels=dt_model.classes_, yticklabels=dt_model.classes_)\nplt.xlabel(\"Predicted Species\")\nplt.ylabel(\"Actual Species\")\nplt.title(\"Decision Tree Confusion Matrix\")\nplt.show()\n\n# Plot 2: Decision Tree Visualization\nplt.figure(figsize=(16, 10))\nplot_tree(dt_model, feature_names=X.columns, class_names=dt_model.classes_, filled=True, rounded=True)\nplt.title(\"Decision Tree Logic for Iris Classification\")\nplt.show()\n\n\n# ================= 3. RANDOM FOREST =================\nprint(\"\\n\" + \"=\"*50)\nprint(\"             RANDOM FOREST MODEL\")\nprint(\"=\"*50)\n\nrf_model = RandomForestClassifier(n_estimators=100, random_state=42)\nrf_model.fit(X_train, y_train)\nrf_pred = rf_model.predict(X_test)\n\nprint(f\"Accuracy: {accuracy_score(y_test, rf_pred) * 100:.2f}%\\n\")\nprint(\"Classification Report:\")\nprint(classification_report(y_test, rf_pred))\n\n# Plot 3: RF Confusion Matrix\nplt.figure(figsize=(6,4))\nsns.heatmap(confusion_matrix(y_test, rf_pred), annot=True, fmt=\"d\", cmap=\"Greens\",\n            xticklabels=rf_model.classes_, yticklabels=rf_model.classes_)\nplt.xlabel(\"Predicted Species\")\nplt.ylabel(\"Actual Species\")\nplt.title(\"Random Forest Confusion Matrix\")\nplt.show()\n\n# Plot 4: Feature Importance (Upgraded to Seaborn for a cleaner look)\nplt.figure(figsize=(8, 5))\nimportance_df = pd.DataFrame({'Feature': X.columns, 'Importance': rf_model.feature_importances_})\nimportance_df = importance_df.sort_values(by='Importance', ascending=False)\n\nsns.barplot(x=\"Importance\", y=\"Feature\", data=importance_df, palette=\"viridis\")\nplt.title(\"Random Forest: Which Features Matter Most?\")\nplt.show()\n\n\n# ================= 4. MAKE A PREDICTION =================\nprint(\"\\n\" + \"=\"*50)\nprint(\"             MAKE A PREDICTION\")\nprint(\"=\"*50)\n\n# Suggested values for an Iris-Virginica\nsepal_length = float(input(\"Enter Sepal Length (Suggested: 6.5): \"))\nsepal_width  = float(input(\"Enter Sepal Width  (Suggested: 3.0): \"))\npetal_length = float(input(\"Enter Petal Length (Suggested: 5.2): \"))\npetal_width  = float(input(\"Enter Petal Width  (Suggested: 2.0): \"))\n\ninput_data = pd.DataFrame({\n    \"sepal_length\": [sepal_length],\n    \"sepal_width\": [sepal_width],\n    \"petal_length\": [petal_length],\n    \"petal_width\": [petal_width]\n})\n\ndt_prediction = dt_model.predict(input_data)[0]\nrf_prediction = rf_model.predict(input_data)[0]\nrf_probabilities = rf_model.predict_proba(input_data)[0]\n\nprint(\"\\n--- PREDICTION RESULTS ---\")\nprint(f\">> Decision Tree says: {dt_prediction.upper()}\")\nprint(f\">> Random Forest says: {rf_prediction.upper()}\")\n\nprint(\"\\nRandom Forest Certainty Breakdown:\")\nfor species_name, prob in zip(rf_model.classes_, rf_probabilities):\n    print(f\" - {species_name}: {prob * 100:.1f}%\")\n\n# ================= 5. VISUALIZE YOUR CUSTOM INPUT =================\nplt.figure(figsize=(8, 6))\nsns.scatterplot(data=df, x=\"petal_length\", y=\"petal_width\", hue=\"species\", palette=\"Set1\", s=75)\n\n# Plot your custom inputted Petal Length and Width as a massive star!\nplt.scatter(\n    petal_length, petal_width, \n    color=\"black\", s=350, marker=\"*\", edgecolor=\"yellow\", \n    label=\"Your Input\"\n)\n\nplt.title(\"Iris Species Classification (With Your Input Marked)\")\nplt.xlabel(\"Petal Length (cm)\")\nplt.ylabel(\"Petal Width (cm)\")\nplt.legend()\nplt.show()"}, {"name": "exp 6 - SVM - Iris.csv", "algorithmSteps": "1. Load and clean the Iris dataset.\n2. Select petal length and petal width as features.\n3. Encode the species labels.\n4. Split and standardize the data.\n5. Train a Linear-kernel SVM.\n6. Train an RBF-kernel SVM.\n7. Evaluate both models.\n8. Predict a new flower and compare decision boundaries.", "algorithm": "X = df[[\"petal_length\", \"petal_width\"]]\ny = LabelEncoder().fit_transform(df[\"species\"])\n\nscaler = StandardScaler()\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)\n\nlinear = SVC(kernel=\"linear\")\nrbf = SVC(kernel=\"rbf\")\nlinear.fit(X_train, y_train)\nrbf.fit(X_train, y_train)", "code": "#!pip install pandas numpy matplotlib seaborn scikit-learn xgboost\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler, LabelEncoder\nfrom sklearn.svm import SVC\nfrom sklearn.metrics import accuracy_score, confusion_matrix, classification_report\n\n# ================= 1. DATA OVERVIEW =================\ndf = pd.read_csv(\"iris.csv\")\n\n# Clean dataset and ensure target column is named 'species'\nif \"Species\" in df.columns:\n    df = df.rename(columns={\"Species\": \"species\"})\ndf = df.drop(columns=[\"Id\", \"id\"], errors=\"ignore\").dropna().drop_duplicates()\n\nprint(\"========== DATASET OVERVIEW ==========\")\nprint(df.head())\nprint(f\"\\nDataset Shape: {df.shape}\")\nprint(\"\\nSpecies Count:\\n\", df[\"species\"].value_counts().to_string())\n\n# Define features using the lowercase underscore format (Petals only for 2D visualization)\nX = df[[\"petal_length\", \"petal_width\"]]\ny = df[\"species\"]\n\nencoder = LabelEncoder()\ny_encoded = encoder.fit_transform(y)\n\nX_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)\n\n# Feature Scaling (Highly recommended for SVMs)\nscaler = StandardScaler()\nX_train_scaled = scaler.fit_transform(X_train)\nX_test_scaled = scaler.transform(X_test)\n\n\n# ================= 2. SVM: LINEAR KERNEL =================\nprint(\"\\n\" + \"=\"*50)\nprint(\"             SVM: LINEAR KERNEL\")\nprint(\"=\"*50)\n\nlinear_model = SVC(kernel=\"linear\", probability=True, random_state=42)\nlinear_model.fit(X_train_scaled, y_train)\nlinear_pred = linear_model.predict(X_test_scaled)\n\nprint(f\"Linear Accuracy: {accuracy_score(y_test, linear_pred) * 100:.2f}%\\n\")\nprint(\"Linear Classification Report:\")\nprint(classification_report(y_test, linear_pred, target_names=encoder.classes_))\n\nplt.figure(figsize=(6,4))\nsns.heatmap(confusion_matrix(y_test, linear_pred), annot=True, fmt=\"d\", cmap=\"Blues\",\n            xticklabels=encoder.classes_, yticklabels=encoder.classes_)\nplt.xlabel(\"Predicted Species\")\nplt.ylabel(\"Actual Species\")\nplt.title(\"Linear SVM - Confusion Matrix\")\nplt.show()\n\n\n# ================= 3. SVM: RBF KERNEL =================\nprint(\"\\n\" + \"=\"*50)\nprint(\"             SVM: RBF KERNEL\")\nprint(\"=\"*50)\n\nrbf_model = SVC(kernel=\"rbf\", probability=True, random_state=42)\nrbf_model.fit(X_train_scaled, y_train)\nrbf_pred = rbf_model.predict(X_test_scaled)\n\nprint(f\"RBF Accuracy: {accuracy_score(y_test, rbf_pred) * 100:.2f}%\\n\")\nprint(\"RBF Classification Report:\")\nprint(classification_report(y_test, rbf_pred, target_names=encoder.classes_))\n\nplt.figure(figsize=(6,4))\nsns.heatmap(confusion_matrix(y_test, rbf_pred), annot=True, fmt=\"d\", cmap=\"Greens\",\n            xticklabels=encoder.classes_, yticklabels=encoder.classes_)\nplt.xlabel(\"Predicted Species\")\nplt.ylabel(\"Actual Species\")\nplt.title(\"RBF SVM - Confusion Matrix\")\nplt.show()\n\n\n# ================= 4. MAKE A PREDICTION =================\nprint(\"\\n\" + \"=\"*50)\nprint(\"             MAKE A PREDICTION\")\nprint(\"=\"*50)\n\n# Suggested values for an Iris-Versicolor\npetal_length = float(input(\"Enter Petal Length (Suggested: 4.5): \"))\npetal_width = float(input(\"Enter Petal Width  (Suggested: 1.5): \"))\n\ninput_data = pd.DataFrame({\n    \"petal_length\": [petal_length],\n    \"petal_width\": [petal_width]\n})\n\n# Don't forget to scale the custom input exactly like the training data!\ninput_scaled = scaler.transform(input_data)\n\nlinear_prediction = encoder.inverse_transform(linear_model.predict(input_scaled))[0]\nrbf_prediction = encoder.inverse_transform(rbf_model.predict(input_scaled))[0]\n\nprint(\"\\n--- PREDICTION RESULTS ---\")\nprint(f\">> Linear Kernel says: {linear_prediction.upper()}\")\nprint(f\">> RBF Kernel says:    {rbf_prediction.upper()}\")\n\n\n# ================= 5. DECISION BOUNDARY COMPARISON =================\n# Set up a meshgrid for the contour plots based on the scaled training data\nx_min, x_max = X_train_scaled[:, 0].min() - 1, X_train_scaled[:, 0].max() + 1\ny_min, y_max = X_train_scaled[:, 1].min() - 1, X_train_scaled[:, 1].max() + 1\nxx, yy = np.meshgrid(np.arange(x_min, x_max, 0.02), np.arange(y_min, y_max, 0.02))\ngrid = np.c_[xx.ravel(), yy.ravel()]\n\n# Create a side-by-side plot layout\nplt.figure(figsize=(14, 6))\n\n# Plot 1: Linear Boundary\nplt.subplot(1, 2, 1)\nlinear_z = linear_model.predict(grid).reshape(xx.shape)\nplt.contourf(xx, yy, linear_z, alpha=0.3, cmap=\"viridis\")\nplt.scatter(X_train_scaled[:, 0], X_train_scaled[:, 1], c=y_train, cmap=\"viridis\", edgecolors='k')\nplt.scatter(input_scaled[0, 0], input_scaled[0, 1], color=\"red\", s=300, marker=\"*\", edgecolor=\"black\", label=\"Your Input\")\nplt.xlabel(\"Petal Length (Scaled)\")\nplt.ylabel(\"Petal Width (Scaled)\")\nplt.title(\"SVM with Linear Kernel\")\nplt.legend()\n\n# Plot 2: RBF Boundary\nplt.subplot(1, 2, 2)\nrbf_z = rbf_model.predict(grid).reshape(xx.shape)\nplt.contourf(xx, yy, rbf_z, alpha=0.3, cmap=\"viridis\")\nplt.scatter(X_train_scaled[:, 0], X_train_scaled[:, 1], c=y_train, cmap=\"viridis\", edgecolors='k')\nplt.scatter(input_scaled[0, 0], input_scaled[0, 1], color=\"red\", s=300, marker=\"*\", edgecolor=\"black\", label=\"Your Input\")\nplt.xlabel(\"Petal Length (Scaled)\")\nplt.ylabel(\"Petal Width (Scaled)\")\nplt.title(\"SVM with RBF Kernel\")\nplt.legend()\n\nplt.tight_layout()\nplt.show()"}, {"name": "exp 7 - K means clustering - Mall_Customers.csv", "algorithmSteps": "1. Load the Mall Customers dataset.\n2. Select Annual Income and Spending Score.\n3. Calculate WCSS for K = 1 to 10.\n4. Use the Elbow Method to select K = 5.\n5. Train the K-Means model.\n6. Assign customers to clusters.\n7. Predict the cluster of a new customer.\n8. Visualize clusters and centroids.", "algorithm": "X = df[[\"Annual Income (k$)\", \"Spending Score (1-100)\"]]\n\nwcss = []\nfor k in range(1, 11):\n    km = KMeans(n_clusters=k, random_state=42)\n    km.fit(X)\n    wcss.append(km.inertia_)\n\n# Final clustering\nkm = KMeans(n_clusters=5, random_state=42)\ndf[\"Cluster\"] = km.fit_predict(X)", "code": "#!pip install pandas numpy matplotlib seaborn scikit-learn xgboost\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.cluster import KMeans\n\n# ================= 1. DATA OVERVIEW =================\ndf = pd.read_csv(\"Mall_Customers.csv\").dropna().drop_duplicates()\n\nprint(\"========== DATASET OVERVIEW ==========\")\nprint(df.head())\nprint(f\"\\nDataset Shape: {df.shape}\")\n\nX = df[[\"Annual Income (k$)\", \"Spending Score (1-100)\"]]\n\n# ================= 2. THE ELBOW METHOD =================\nprint(\"\\n========== FINDING OPTIMAL CLUSTERS ==========\")\nprint(\"Running the Elbow Method to find the best 'k'...\")\n\nwcss = []\nfor i in range(1, 11):\n    kmeans = KMeans(n_clusters=i, random_state=42, n_init=10)\n    kmeans.fit(X)\n    wcss.append(kmeans.inertia_)\n\n# Plotting the Elbow Graph\nplt.figure(figsize=(8, 5))\nplt.plot(range(1, 11), wcss, marker=\"o\", linestyle=\"--\", color=\"blue\")\nplt.xlabel(\"Number of Clusters (k)\")\nplt.ylabel(\"WCSS (Within-Cluster Sum of Squares)\")\nplt.title(\"Elbow Method For Optimal 'k'\")\nplt.grid(True)\nplt.show()\n\n# ================= 3. K-MEANS CLUSTERING (k=5) =================\nprint(\"\\n========== K-MEANS CLUSTERING (k=5) ==========\")\n# 5 is typically the distinct \"elbow\" bend for this specific dataset\nkmeans = KMeans(n_clusters=5, random_state=42, n_init=10)\ndf[\"Cluster\"] = kmeans.fit_predict(X)\n\nprint(\"Number of Customers in Each Group:\")\ncluster_counts = df[\"Cluster\"].value_counts().sort_index()\nfor cluster_id, count in cluster_counts.items():\n    print(f\" - Cluster {cluster_id}: {count} customers\")\n\n# ================= 4. SEGMENT A NEW CUSTOMER =================\nprint(\"\\n========== PREDICT NEW CUSTOMER ==========\")\n# Suggesting values for a \"High Income, High Spending\" target customer\nincome = float(input(\"Enter Annual Income (k$)   (Suggested: 90): \"))\nscore = float(input(\"Enter Spending Score (1-100) (Suggested: 85): \"))\n\nnew_customer = pd.DataFrame({\n    \"Annual Income (k$)\": [income],\n    \"Spending Score (1-100)\": [score]\n})\n\nassigned_cluster = kmeans.predict(new_customer)[0]\n\nprint(\"\\n--- PREDICTION RESULT ---\")\nprint(f\">> This customer belongs to CLUSTER {assigned_cluster}\")\n\n# ================= 5. VISUALIZE CUSTOMER SEGMENTS =================\nplt.figure(figsize=(10, 7))\n\n# Plot the existing clustered data\nsns.scatterplot(\n    data=df, x=\"Annual Income (k$)\", y=\"Spending Score (1-100)\",\n    hue=\"Cluster\", palette=\"tab10\", s=100, alpha=0.7\n)\n\n# Plot the center points (Centroids) of each cluster\nplt.scatter(\n    kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1],\n    s=250, marker=\"X\", c=\"black\", label=\"Centroids\"\n)\n\n# Plot your custom inputted customer as a massive gold star!\nplt.scatter(\n    income, score,\n    color=\"gold\", s=600, marker=\"*\", edgecolor=\"black\", linewidths=1.5,\n    label=\"Your Customer\", zorder=5\n)\n\nplt.xlabel(\"Annual Income (k$)\")\nplt.ylabel(\"Spending Score (1-100)\")\nplt.title(\"Customer Segmentation with K-Means (With Your Input Marked)\")\nplt.legend()\nplt.grid(True, linestyle=\"--\", alpha=0.4)\nplt.show()"}, {"name": "exp 8 - PCA - Iris.csv", "algorithmSteps": "1. Load and clean the Iris dataset.\n2. Select the four flower measurements.\n3. Standardize all features.\n4. Apply PCA to reduce 4 dimensions to 2.\n5. Calculate explained variance and total information retained.\n6. Transform a new flower into PCA space.\n7. Visualize the two principal components.", "algorithm": "X = df[[\"sepal_length\", \"sepal_width\",\n          \"petal_length\", \"petal_width\"]]\n\nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X)\n\npca = PCA(n_components=2)\nX_pca = pca.fit_transform(X_scaled)\n\nprint(pca.explained_variance_ratio_)", "code": "#!pip install pandas numpy matplotlib seaborn scikit-learn xgboost\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.decomposition import PCA\n\n# ================= 1. DATA OVERVIEW =================\ndf = pd.read_csv(\"iris.csv\")\n\n# Clean dataset and ensure target column is explicitly named 'species'\nif \"Species\" in df.columns:\n    df = df.rename(columns={\"Species\": \"species\"})\ndf = df.drop(columns=[\"Id\", \"id\"], errors=\"ignore\").dropna().drop_duplicates()\n\nprint(\"========== DATASET OVERVIEW ==========\")\nprint(df.head())\nprint(f\"\\nOriginal Dataset Shape: {df.shape}\")\n\n# Define features using the lowercase underscore format\nX = df[[\"sepal_length\", \"sepal_width\", \"petal_length\", \"petal_width\"]]\ny = df[\"species\"]\n\n\n# ================= 2. SCALING & PCA =================\n# Scaling is absolutely critical for PCA so all features weigh equally\nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X)\n\nprint(\"\\n========== APPLYING PCA ==========\")\nprint(f\"Compressing features from {X.shape[1]} dimensions down to 2...\")\n\n# Reduce from 4 features down to 2 Principal Components\npca = PCA(n_components=2)\nX_pca = pca.fit_transform(X_scaled)\n\n# Create a clean DataFrame for the newly compressed data\npca_df = pd.DataFrame(X_pca, columns=[\"PC1\", \"PC2\"])\npca_df[\"species\"] = y.values\n\n\n# ================= 3. UNDERSTANDABLE EVALUATION =================\nvariance = pca.explained_variance_ratio_\n\nprint(\"\\n--- DIMENSION REDUCTION RESULTS ---\")\nprint(f\"PC1 (Principal Component 1) holds {variance[0] * 100:.1f}% of the original information.\")\nprint(f\"PC2 (Principal Component 2) holds {variance[1] * 100:.1f}% of the original information.\")\nprint(f\">> Total Information Retained:    {(variance[0] + variance[1]) * 100:.1f}%\")\n\n\n# ================= 4. CUSTOM DATA PROJECTION =================\nprint(\"\\n========== PLOT A CUSTOM FLOWER ==========\")\n# Suggested values for what is likely an Iris-Versicolor\nsepal_length = float(input(\"Enter Sepal Length (Suggested: 5.8): \"))\nsepal_width  = float(input(\"Enter Sepal Width  (Suggested: 2.8): \"))\npetal_length = float(input(\"Enter Petal Length (Suggested: 4.5): \"))\npetal_width  = float(input(\"Enter Petal Width  (Suggested: 1.3): \"))\n\ninput_data = pd.DataFrame({\n    \"sepal_length\": [sepal_length],\n    \"sepal_width\": [sepal_width],\n    \"petal_length\": [petal_length],\n    \"petal_width\": [petal_width]\n})\n\n# To plot the custom data, it MUST be scaled and transformed exactly like the training data!\ninput_scaled = scaler.transform(input_data)\ninput_pca = pca.transform(input_scaled)\n\nprint(f\"\\nYour 4D flower was compressed to 2D coordinates: [PC1: {input_pca[0][0]:.2f}, PC2: {input_pca[0][1]:.2f}]\")\n\n\n# ================= 5. VISUALIZE PCA SPACE =================\nplt.figure(figsize=(9, 6))\n\n# Plot the 2D compressed dataset\nsns.scatterplot(\n    data=pca_df, x=\"PC1\", y=\"PC2\", \n    hue=\"species\", palette=\"Set1\", s=100, alpha=0.7\n)\n\n# Plot your custom inputted flower as a massive gold star!\nplt.scatter(\n    input_pca[0][0], input_pca[0][1], \n    color=\"gold\", s=450, marker=\"*\", edgecolor=\"black\", linewidths=1.5, \n    label=\"Your Flower\", zorder=5\n)\n\nplt.xlabel(f\"Principal Component 1 ({variance[0] * 100:.1f}%)\")\nplt.ylabel(f\"Principal Component 2 ({variance[1] * 100:.1f}%)\")\nplt.title(\"PCA: Iris Dataset (Reduced from 4D to 2D)\")\nplt.legend()\nplt.grid(True, linestyle=\"--\", alpha=0.4)\nplt.show()"}, {"name": "exp 9 - AdaBoost and XGBoost - Iris.csv", "algorithmSteps": "1. Load and clean the Iris dataset.\n2. Standardize column names and encode the target.\n3. Split the data into training and testing sets.\n4. Train an AdaBoost classifier.\n5. Train an XGBoost classifier.\n6. Evaluate both models using accuracy and classification reports.\n7. Predict a new flower using both models.\n8. Compare the models using confusion matrices and an accuracy chart.", "algorithm": "X = df[[\"sepal_length\", \"sepal_width\",\n          \"petal_length\", \"petal_width\"]]\ny = LabelEncoder().fit_transform(df[\"species\"])\n\n# AdaBoost\nada = AdaBoostClassifier(n_estimators=100,\n                         algorithm=\"SAMME\")\nada.fit(X_train, y_train)\npred_ada = ada.predict(X_test)\n\n# XGBoost\nxgb = XGBClassifier(n_estimators=100,\n                    max_depth=3,\n                    learning_rate=0.1)\nxgb.fit(X_train, y_train)\npred_xgb = xgb.predict(X_test)", "code": "#!pip install pandas numpy matplotlib seaborn scikit-learn xgboost\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import LabelEncoder\nfrom sklearn.ensemble import AdaBoostClassifier\nfrom sklearn.metrics import accuracy_score, confusion_matrix, classification_report\nfrom xgboost import XGBClassifier\n\n# ================= 1. DATA OVERVIEW =================\ndf = pd.read_csv(\"iris.csv\")\n\n# Standardize column names to lowercase_with_underscores\ndf = df.rename(columns={\n    \"SepalLengthCm\": \"sepal_length\",\n    \"SepalWidthCm\": \"sepal_width\",\n    \"PetalLengthCm\": \"petal_length\",\n    \"PetalWidthCm\": \"petal_width\",\n    \"Species\": \"species\"\n})\ndf = df.drop(columns=[\"Id\", \"id\"], errors=\"ignore\").dropna().drop_duplicates()\n\nprint(\"========== DATASET OVERVIEW ==========\")\nprint(df.head())\nprint(f\"\\nDataset Shape: {df.shape}\")\nprint(\"\\nSpecies Count:\\n\", df[\"species\"].value_counts().to_string())\n\n# Define features and target\nX = df[[\"sepal_length\", \"sepal_width\", \"petal_length\", \"petal_width\"]]\ny = df[\"species\"]\n\n# XGBoost requires target classes to be numeric (0, 1, 2)\nencoder = LabelEncoder()\ny_encoded = encoder.fit_transform(y)\n\nX_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)\n\n\n# ================= 2. ADABOOST MODEL =================\nprint(\"\\n\" + \"=\"*50)\nprint(\"             MODEL 1: ADABOOST\")\nprint(\"=\"*50)\n\n# 'SAMME' algorithm is used to future-proof against scikit-learn deprecation warnings\nada_model = AdaBoostClassifier(n_estimators=100, random_state=42, algorithm=\"SAMME\")\nada_model.fit(X_train, y_train)\nada_pred = ada_model.predict(X_test)\nada_acc = accuracy_score(y_test, ada_pred)\n\nprint(f\"AdaBoost Accuracy: {ada_acc * 100:.2f}%\\n\")\nprint(\"AdaBoost Classification Report:\")\nprint(classification_report(y_test, ada_pred, target_names=encoder.classes_))\n\n\n# ================= 3. XGBOOST MODEL =================\nprint(\"\\n\" + \"=\"*50)\nprint(\"             MODEL 2: XGBOOST\")\nprint(\"=\"*50)\n\nxgb_model = XGBClassifier(n_estimators=100, max_depth=3, learning_rate=0.1, random_state=42)\nxgb_model.fit(X_train, y_train)\nxgb_pred = xgb_model.predict(X_test)\nxgb_acc = accuracy_score(y_test, xgb_pred)\n\nprint(f\"XGBoost Accuracy: {xgb_acc * 100:.2f}%\\n\")\nprint(\"XGBoost Classification Report:\")\nprint(classification_report(y_test, xgb_pred, target_names=encoder.classes_))\n\n\n# ================= 4. MAKE A PREDICTION =================\nprint(\"\\n\" + \"=\"*50)\nprint(\"             NEW FLOWER PREDICTION\")\nprint(\"=\"*50)\n\n# Suggested values for an Iris-Virginica\nsepal_length = float(input(\"Enter Sepal Length (Suggested: 6.5): \"))\nsepal_width  = float(input(\"Enter Sepal Width  (Suggested: 3.0): \"))\npetal_length = float(input(\"Enter Petal Length (Suggested: 5.5): \"))\npetal_width  = float(input(\"Enter Petal Width  (Suggested: 1.8): \"))\n\ninput_data = pd.DataFrame({\n    \"sepal_length\": [sepal_length],\n    \"sepal_width\": [sepal_width],\n    \"petal_length\": [petal_length],\n    \"petal_width\": [petal_width]\n})\n\nada_prediction = encoder.inverse_transform(ada_model.predict(input_data))[0]\nxgb_prediction = encoder.inverse_transform(xgb_model.predict(input_data))[0]\n\nprint(\"\\n--- PREDICTION RESULTS ---\")\nprint(f\">> AdaBoost says: {ada_prediction.upper()}\")\nprint(f\">> XGBoost says:  {xgb_prediction.upper()}\")\n\n\n# ================= 5. MODEL COMPARISON DASHBOARD =================\n# Set up a 1x3 grid for the plots so they all appear at once\nfig, axes = plt.subplots(1, 3, figsize=(16, 5))\n\n# Plot 1: AdaBoost Confusion Matrix\nsns.heatmap(confusion_matrix(y_test, ada_pred), annot=True, fmt=\"d\", cmap=\"Reds\", \n            xticklabels=encoder.classes_, yticklabels=encoder.classes_, ax=axes[0])\naxes[0].set_xlabel(\"Predicted\")\naxes[0].set_ylabel(\"Actual\")\naxes[0].set_title(\"AdaBoost Confusion Matrix\")\n\n# Plot 2: XGBoost Confusion Matrix\nsns.heatmap(confusion_matrix(y_test, xgb_pred), annot=True, fmt=\"d\", cmap=\"Blues\", \n            xticklabels=encoder.classes_, yticklabels=encoder.classes_, ax=axes[1])\naxes[1].set_xlabel(\"Predicted\")\naxes[1].set_ylabel(\"Actual\")\naxes[1].set_title(\"XGBoost Confusion Matrix\")\n\n# Plot 3: Accuracy Bar Chart\nmodels = [\"AdaBoost\", \"XGBoost\"]\naccuracies = [ada_acc, xgb_acc]\nbars = axes[2].bar(models, accuracies, color=[\"#e74c3c\", \"#3498db\"])\n\n# Add percentage text on top of the bars\nfor bar in bars:\n    yval = bar.get_height()\n    axes[2].text(bar.get_x() + bar.get_width()/2, yval - 0.05, f\"{yval*100:.1f}%\", \n                 ha='center', va='bottom', color='white', fontweight='bold', fontsize=12)\n\naxes[2].set_ylim(0, 1.1)  # Set slightly above 1 so the top label isn't cut off\naxes[2].set_ylabel(\"Accuracy Score\")\naxes[2].set_title(\"Model Accuracy Comparison\")\n\nplt.tight_layout()\nplt.show()"}, {"name": "exp 10 - K nearest neighbours", "algorithmSteps": "1. Load the handwritten Digits dataset.\n2. Separate pixel features and digit labels.\n3. Split the data into training and testing sets.\n4. Train KNN with K = 5.\n5. Evaluate accuracy and generate a classification report.\n6. Test K values from 1 to 10 and compare accuracy.\n7. Predict a selected test image.\n8. Display the K-value accuracy graph, confusion matrix and digit images.", "algorithm": "X = digits.data\ny = digits.target\n\nknn = KNeighborsClassifier(n_neighbors=5)\nknn.fit(X_train, y_train)\ny_pred = knn.predict(X_test)\n\n# Find best K\nfor k in range(1, 11):\n    model = KNeighborsClassifier(n_neighbors=k)\n    model.fit(X_train, y_train)\n    print(k, model.score(X_test, y_test))", "code": "#!pip install pandas numpy matplotlib seaborn scikit-learn xgboost\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nfrom sklearn.datasets import load_digits\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.metrics import accuracy_score, confusion_matrix, classification_report\n\n# ================= 1. DATA OVERVIEW =================\ndigits = load_digits()\nX = digits.data\ny = digits.target\n\nprint(\"========== DATASET OVERVIEW ==========\")\nprint(f\"Dataset Shape: {X.shape} (1797 images, 64 pixels each)\")\nprint(f\"Classes (Digits): {digits.target_names}\")\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n\n# ================= 2. TRAIN THE KNN MODEL =================\nprint(\"\\n\" + \"=\"*50)\nprint(\"             TRAINING KNN MODEL (k=5)\")\nprint(\"=\"*50)\n\nmodel = KNeighborsClassifier(n_neighbors=5)\nmodel.fit(X_train, y_train)\ny_pred = model.predict(X_test)\n\nprint(f\"KNN Accuracy: {accuracy_score(y_test, y_pred) * 100:.2f}%\\n\")\nprint(\"Classification Report:\")\nprint(classification_report(y_test, y_pred))\n\n\n# ================= 3. FINDING OPTIMAL K =================\nprint(\"\\nEvaluating K values from 1 to 10 in the background for the chart...\")\nk_values = range(1, 11)\naccuracies = []\n\nfor k in k_values:\n    knn = KNeighborsClassifier(n_neighbors=k)\n    knn.fit(X_train, y_train)\n    pred = knn.predict(X_test)\n    accuracies.append(accuracy_score(y_test, pred))\n\n\n# ================= 4. INTERACTIVE PREDICTION =================\nprint(\"\\n\" + \"=\"*50)\nprint(\"             TEST A SPECIFIC IMAGE\")\nprint(\"=\"*50)\n\nmax_index = len(X_test) - 1\nuser_input = input(f\"Enter a test image index (0 to {max_index}) [Suggested: 133]: \")\n\n# Default to 133 if the user just presses Enter or types something invalid\ntry:\n    index = int(user_input)\n    if index < 0 or index > max_index: index = 133\nexcept ValueError:\n    index = 133\n\nprediction = model.predict([X_test[index]])[0]\nactual = y_test[index]\n\nprint(\"\\n--- PREDICTION RESULT ---\")\nprint(f\">> Actual Digit:    {actual}\")\nprint(f\">> Model Predicted: {prediction}\")\nif actual == prediction:\n    print(\">> Result:          ✅ CORRECT\")\nelse:\n    print(\">> Result:          ❌ INCORRECT\")\n\n\n# ================= 5. ALL-IN-ONE DASHBOARD =================\n# Set up a 2x2 grid layout for all 4 plots\nfig, axes = plt.subplots(2, 2, figsize=(14, 10))\nfig.suptitle(\"KNN Handwritten Digit Classification Dashboard\", fontsize=16, fontweight=\"bold\")\n\n# Plot 1: The K-Value Tuning Curve (Top Left)\naxes[0, 0].plot(k_values, accuracies, marker=\"o\", linestyle=\"--\", color=\"b\")\naxes[0, 0].set_xlabel(\"Number of Neighbors (K)\")\naxes[0, 0].set_ylabel(\"Accuracy Score\")\naxes[0, 0].set_title(\"Elbow Method: K Value vs Accuracy\")\naxes[0, 0].grid(True, linestyle=\"--\", alpha=0.6)\n\n# Plot 2: Confusion Matrix (Top Right)\nsns.heatmap(confusion_matrix(y_test, y_pred), annot=True, fmt=\"d\", cmap=\"Blues\", cbar=False, ax=axes[0, 1])\naxes[0, 1].set_xlabel(\"Predicted Digit\")\naxes[0, 1].set_ylabel(\"Actual Digit\")\naxes[0, 1].set_title(f\"Confusion Matrix (k=5)\")\n\n# Plot 3: A Sample Digit from the Raw Dataset (Bottom Left)\naxes[1, 0].imshow(digits.images[0], cmap=\"gray\")\naxes[1, 0].set_title(f\"Sample Raw Dataset Digit (Actual: {digits.target[0]})\")\naxes[1, 0].axis(\"off\")\n\n# Plot 4: Your Custom Selected Test Image (Bottom Right)\naxes[1, 1].imshow(X_test[index].reshape(8, 8), cmap=\"viridis\") # Used viridis color to highlight it's a test prediction\ntitle_color = \"green\" if actual == prediction else \"red\"\naxes[1, 1].set_title(f\"Your Test Image [Index {index}]\\nPredicted: {prediction} | Actual: {actual}\", color=title_color, fontweight=\"bold\")\naxes[1, 1].axis(\"off\")\n\nplt.tight_layout()\nplt.subplots_adjust(top=0.92) # Adjust layout so the main title fits\nplt.show()"}];
-
-const list = document.getElementById("list");
-experiments.forEach((exp) => {
-  const row = document.createElement("div");
-  row.className = "row";
-
-  const top = document.createElement("div");
-  top.className = "top";
-
-  const name = document.createElement("div");
-  name.className = "name";
-  name.textContent = exp.name;
-
-  const copy = document.createElement("button");
-  copy.textContent = "copy";
-  copy.onclick = async () => {
-    try {
-      await navigator.clipboard.writeText(exp.code);
-      copy.textContent = "copied";
-      setTimeout(() => copy.textContent = "copy", 1000);
-    } catch {
-      const ta = document.createElement("textarea");
-      ta.value = exp.code;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      ta.remove();
-      copy.textContent = "copied";
-      setTimeout(() => copy.textContent = "copy", 1000);
+      if (!document.execCommand('copy')) {
+        throw new Error('Copy failed');
+      }
+      document.body.removeChild(temp);
     }
-  };
 
-  const view = document.createElement("button");
-  view.textContent = "view";
-  view.onclick = () => {
-    row.classList.toggle("open");
-    view.textContent = row.classList.contains("open") ? "hide" : "view";
-  };
+    btn.textContent = 'Copied ✓';
+    btn.disabled = true;
 
-  const buttons = document.createElement("div");
-  buttons.append(copy, view);
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.disabled = false;
+    }, 1200);
 
-  top.append(name, buttons);
+  } catch (error) {
+    el.focus();
+    el.select();
+    el.setSelectionRange(0, el.value.length);
+    btn.textContent = 'Press Ctrl+C';
 
-  const body = document.createElement("div");
-  body.className = "body";
+    setTimeout(() => {
+      btn.textContent = original;
+    }, 1800);
+  }
+}
 
-  const algorithmTitle = document.createElement("div");
-  algorithmTitle.className = "algorithm-title";
-  algorithmTitle.textContent = "Algorithm — Steps";
-
-  const algorithmSteps = document.createElement("div");
-  algorithmSteps.className = "algorithm";
-  algorithmSteps.textContent = exp.algorithmSteps;
-
-  const codeTitle = document.createElement("div");
-  codeTitle.className = "code-title";
-  codeTitle.textContent = "Algorithm — Code";
-
-  const algorithmCode = document.createElement("pre");
-  algorithmCode.textContent = exp.algorithm;
-
-  const codeTitle2 = document.createElement("div");
-  codeTitle2.className = "code-title";
-  codeTitle2.textContent = "Full Code";
-
-  const pre = document.createElement("pre");
-  pre.textContent = exp.code;
-
-  body.appendChild(algorithmTitle);
-  body.appendChild(algorithmSteps);
-  body.appendChild(codeTitle);
-  body.appendChild(algorithmCode);
-  body.appendChild(codeTitle2);
-  body.appendChild(pre);
-  row.append(top, body);
-  list.appendChild(row);
-});
+function selectCode(id) {
+  const el = document.getElementById(id);
+  el.focus();
+  el.select();
+  el.setSelectionRange(0, el.value.length);
+}
 </script>
 </body>
 </html>
